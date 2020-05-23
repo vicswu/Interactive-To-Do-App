@@ -3,8 +3,14 @@ const todoInput = document.querySelector('.todo-input');
 const todoButton = document.querySelector('.todo-button');
 const todoList = document.querySelector('.todo-list');
 
+const dateElement = document.getElementById("date");
+const options = { weekday: "long", month: "short", day: "numeric" };
+const today = new Date();
+dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+
 //Event Listeners
 todoButton.addEventListener('click', addTodo);
+todoList.addEventListener('click', deleteCheck);
 
 //Functions
 function addTodo(event) {
@@ -36,4 +42,25 @@ function addTodo(event) {
     //Append to List
     todoList.appendChild(todoDiv);
 
+    //Clear todoInput.value
+    todoInput.value = "";
+}
+
+function deleteCheck(e) {
+    const item = e.target;
+
+    //Delete todo
+    if (item.classList[0] === 'deleted-button') {
+        const parent = item.parentElement;
+        parent.classList.add('fall');
+        parent.addEventListener('transitionend', function() {
+            parent.remove();
+        });
+    }
+
+    //Complete todo
+    if (item.classList[0] === 'completed-button') {
+        const parent = item.parentElement;
+        parent.classList.toggle('completed');
+    }
 }
