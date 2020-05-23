@@ -170,3 +170,13 @@ select {
     background: white;
     color: #a8edea;
 }
+
+.circle {
+    margin: 10px;
+    transition: all 0.5s ease;
+}
+
+.circle:hover {
+    color: #a8edea;
+    cursor: pointer;
+}

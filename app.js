@@ -23,6 +23,12 @@ function addTodo(event) {
     const todoDiv = document.createElement('div');
     todoDiv.classList.add("todo");
 
+    //Circle
+    const circle = document.createElement('li');
+    circle.innerHTML = '<i class="fas fa-sort"></i>';
+    circle.classList.add("circle");
+    todoDiv.appendChild(circle);
+
     //Create LI
     const newTodo = document.createElement('li');
     newTodo.innerText = todoInput.value;
